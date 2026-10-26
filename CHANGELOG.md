@@ -94,5 +94,6 @@ release is cut; [docs/RELEASING.md](docs/RELEASING.md) explains how.
 - **Levels:** The Outliner no longer shows "Origin unknown" for the world and brush entities, and counts a single key as "1 key".
 - **Compilers:** Reconcile VibeMap2 3.1.0 known issues and Quake map preflight, retiring fixed upstream warnings while retaining documented platform constraints and unresolved risks.
 - Keep mesh, prop, assembly, texture, waveform and multitrack editors in tabs inside the main studio window, with shared context, guarded closing and document-local shortcuts.
+- **Builds:** Use canonical compiler submodule URLs so forked repositories can check out the pinned sources on Windows, macOS and Linux.
 
 [Unreleased]: https://github.com/themuffinator/VibeStudio/commits/main

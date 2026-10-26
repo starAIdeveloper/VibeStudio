@@ -154,8 +154,11 @@ VibeStudio changes a compiler.
 
 The two repositories still carry their earlier names, VibeyMapTools and q3mapx.
 They will be renamed VibeMap2 and VibeMap3 on GitHub, which redirects the old
-URLs. `.gitmodules` uses relative URLs (`../VibeyMapTools.git`, `../q3mapx.git`)
-that resolve beside the VibeStudio remote you cloned from.
+URLs. `.gitmodules` uses explicit HTTPS URLs for the canonical
+`themuffinator/VibeyMapTools` and `themuffinator/q3mapx` repositories so forks
+can initialise the pinned compilers without requiring sibling repositories
+under the fork owner. Keep these URLs aligned with the compiler manifest;
+changing the superproject owner must not change the compiler source.
 
 The pinned revisions are the forks' published `main` commits from just before
 the rename, so a build of the pinned sources still produces the VibeyMapTools

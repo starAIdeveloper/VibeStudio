@@ -1,9 +1,9 @@
 [submodule "external/compilers/vibemap2"]
 	path = external/compilers/vibemap2
-	url = ../VibeyMapTools.git
+	url = https://github.com/themuffinator/VibeyMapTools.git
 [submodule "external/compilers/vibemap3"]
 	path = external/compilers/vibemap3
-	url = ../q3mapx.git
+	url = https://github.com/themuffinator/q3mapx.git
 [submodule "external/compilers/zdbsp"]
 	path = external/compilers/zdbsp
 	url = https://github.com/rheit/zdbsp.git
