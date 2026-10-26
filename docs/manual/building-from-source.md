@@ -176,3 +176,15 @@ The package does not include the Qt libraries: the release scripts add them for 
 - [Architecture](../ARCHITECTURE.md): how the studio's modules fit together.
 - [Dependencies](../DEPENDENCIES.md): every library and tool the build uses.
 - [Packaging](../PACKAGING.md): release packaging and validation.
+
+### CI platform compatibility
+
+The Unix PR jobs retain optimised builds and the full test suite but omit debug
+symbols (`-Ddebug=false`). Hundreds of statically linked test executables can
+otherwise exhaust the hosted Linux runner's disk while linking. Local builds
+keep their normal debug settings.
+
+On Apple Silicon, Meson includes the compiler's `arm_acle.h` before Qt headers
+to provide the `__yield` declaration used by Qt 6.10.1. On MSVC, the bundled
+FLAC implementation has a local C4267 warning guard; application warnings
+and release builds' warnings-as-errors policy remain enabled.

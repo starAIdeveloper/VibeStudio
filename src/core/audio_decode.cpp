@@ -6,10 +6,20 @@
 #define DR_MP3_NO_STDIO
 #define DR_MP3_FLOAT_OUTPUT
 #include <dr_mp3.h>
+// The pinned dr_flac metadata reader narrows a bounded size_t to uint32.
+// Keep its MSVC C4267 warning local to the third-party implementation;
+// application code below retains the build's normal warning policy.
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4267)
+#endif
 #define DR_FLAC_IMPLEMENTATION
 #define DR_FLAC_NO_STDIO
 #define DR_FLAC_NO_OGG
 #include <dr_flac.h>
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 #include <vorbis/vorbisfile.h>
 
 #include <QCoreApplication>

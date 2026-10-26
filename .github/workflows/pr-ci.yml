@@ -88,6 +88,8 @@ jobs:
           --github-repo "${{ github.repository }}"
           --update-channel dev
 
+      # Static test executables duplicate debug information from the studio
+      # libraries; omit symbols so the complete suite fits hosted runner disks.
       - name: Configure
         if: matrix.os != 'windows-latest'
         shell: bash
@@ -95,6 +97,7 @@ jobs:
           meson setup builddir
           --backend ninja
           --buildtype=debugoptimized
+          -Ddebug=false
           -Dgithub_repo=${{ github.repository }}
           -Dupdate_channel=dev
           -Daudio_duplex=${{ matrix.os == 'ubuntu-latest' && 'disabled' || 'enabled' }}

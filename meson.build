@@ -12,6 +12,13 @@ project(
   ],
 )
 
+# Qt 6.10.1 qyieldcpu.h uses Clang's ARM __yield intrinsic without
+# including its declaration. Supply the compiler header before Qt headers
+# on Apple Silicon; keep diagnostics enabled and other platforms unchanged.
+if host_machine.system() == 'darwin' and host_machine.cpu_family() == 'aarch64'
+  add_project_arguments('-include', 'arm_acle.h', language: 'cpp')
+endif
+
 qt6_modules = ['Core', 'Gui', 'Widgets', 'Network']
 # Network is here for the opt-in AI transport (src/core/ai_transport.*), which
 # the CLI and the shell share.
